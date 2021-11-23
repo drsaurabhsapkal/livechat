@@ -1,0 +1,138 @@
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-online {
+    height: 8px;
+    width: 8px;
+    background-color: rgb(25, 207, 41);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+:is(.chat-box)::-webkit-scrollbar{
+  width: 0px;
+}
+
+.chat-box{
+  position: relative;
+  min-height: 600px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+:is(.chat-follow)::-webkit-scrollbar{
+  width: 0px;
+}
+.chat-follow{
+  position: relative;
+  min-height: 800px;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.img-radius{
+  --background: #F0F8FF;
+	--primary: #FFF8DC;
+	--secondary: #F0FFFF;
+	--third: #FFF8DC;
+}
+
+.img-radius{
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+    animation: morph 8s ease-in-out infinite;
+    transition: all 1s ease-in-out;
+    z-index: 5;
+}
+
+@keyframes morph {
+ 0% {
+     border-radius:  12% 19% 18% 17% / 15% 16% 19% 21%;
+     background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+     height: 900px;
+     width: auto;
+ } 
+ 
+ 50% {
+     border-radius: 29% 34% 31% 29% / 30% 30% 34% 35% ;
+     background: linear-gradient(45deg, var(--third) 0%, var(--secondary) 100%);
+     height: 900px;
+     width: auto;
+ }
+ 
+ 100% {
+   border-radius:  12% 19% 18% 17% / 15% 16% 19% 21% ;
+   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+   height: 900px;
+   width:auto;
+ } 
+}
+
+
+.msg-send-friend{
+  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+  animation: phas  8s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+  z-index: 5;
+}
+
+@keyframes phas {
+0% {
+   border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
+   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+} 
+
+50% {
+   border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
+   background: linear-gradient(45deg, var(--third) 0%, var(--secondary) 100%);
+}
+
+100% {
+ border-radius: 0% 100% 0% 100% / 100% 0% 100% 0% ;
+ background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+} 
+}
+
+.msg-send-user{
+  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+  animation: phas  8s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+  z-index: 5;
+}
+
+
+@keyframes phas {
+0% {
+   border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
+   background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+} 
+
+50% {
+   border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
+   background: linear-gradient(45deg, var(--third) 0%, var(--secondary) 100%);
+}
+
+100% {
+ border-radius: 0% 100% 0% 100% / 100% 0% 100% 0% ;
+ background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+} 
+}
+
+
+.chat-box-scroll{
+  position: relative;
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+:is(.chat-box-scroll)::-webkit-scrollbar{
+  width: 0px;
+}
+
+.msg-send{
+  background: #F0F8FF;
+}
