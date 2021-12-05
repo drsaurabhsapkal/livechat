@@ -35,7 +35,7 @@
                if(mysqli_query($conn,$grup_up)){
                    echo "
                         <script>
-                            window.location.reload(true);
+                            $('#userinfo').html('');
                         </script>
                    ";
                }

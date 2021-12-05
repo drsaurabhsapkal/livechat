@@ -120,8 +120,68 @@
             </div>
         </div>
     </div>
+    <div class="col">
+        <span id='log_msg'></span>
+        <span id='registration_msg'></span>
+        <span id='forget_msg'></span>
+    </div>
 
-    <div class="position-fixed  bottom-0 end-0 p-3" style="z-index: 11">
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="position-fixed position-absolute top-0 end-0 p-3">
+                <!-- Then Username Or Password is Wrong -->
+                <div class="toast" id='liveToast3'>
+                    <div class="toast-header">
+                        <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class="rounded me-2" alt="tost">
+                        <strong class="me-auto">LiveChat</strong>
+                        <small>&#128162;</small>
+                        <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class="toast-body">
+                        Username Or Password is Wrong....&#x1F44E;
+                    </div>
+                </div>
+                  <!-- Then Username Already Exits -->
+                  <div class='toast' id='liveToast5'>
+                    <div class='toast-header'>
+                        <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
+                        <strong class='me-auto'>LiveChat</strong>
+                        <small></small>
+                        <button type='button'  class=
+                        'btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class='toast-body'>
+                        Username Already Exits....&#x1F44E;
+                    </div>
+                </div>
+                <!-- Then Record Inserted Successfully -->
+                <div class='toast' id='liveToast4'>
+                    <div class='toast-header'>
+                        <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
+                        <strong class='me-auto'>LiveChat</strong>
+                        <small></small>
+                        <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class='toast-body'>
+                        Record Inserted Successfully....&#128077;
+                    </div>
+                </div>
+                <!-- Password Send to Registed Email Id -->
+                <div class='toast' id='liveToast6'>
+                    <div class='toast-header'>
+                        <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
+                        <strong class='me-auto'>LiveChat</strong>
+                        <small></small>
+                        <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                    </div>
+                    <div class='toast-body'>
+                        Password Send to Registed Email Id....&#128077;
+                    </div>
+                </div>
+                <!-- Instert any one here-->
+        </div>
+    </div>
+
+
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;'class="rounded me-2" alt="...">
@@ -148,71 +208,6 @@
         </div>
     </div>
 
-    <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-1 bd-example-toasts">
-        <div class="toast-container">
-            <div class="toast" id='liveToast3'>
-                <div class="toast-header">
-                    <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class="rounded me-2" alt="tost">
-                    <strong class="me-auto">LiveChat</strong>
-                    <small>&#128162;</small>
-                    <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-                </div>
-            <div class="toast-body">
-                Username Or Password is Wrong....&#x1F44E;
-            </div>
-        </div>
-    </div>
-
-    <div aria-live='polite' aria-atomic='true' class='position-fixed top-0 end-0 bd-example-toasts'>
-        <div class='toast-container'>
-            <div class='toast' id='liveToast4'>
-                <div class='toast-header'>
-                    <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
-                    <strong class='me-auto'>LiveChat</strong>
-                    <small></small>
-                    <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-                </div>
-            <div class='toast-body'>
-                Record Inserted Successfully....&#128077;
-            </div>
-        </div>
-    </div>
-
-    <div aria-live='polite' aria-atomic='true' class='position-fixed top-0 end-0 bd-example-toasts'>
-        <div class='toast-container'>
-            <div class='toast' id='liveToast5'>
-                <div class='toast-header'>
-                    <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
-                    <strong class='me-auto'>LiveChat</strong>
-                    <small></small>
-                    <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-                </div>
-            <div class='toast-body'>
-                Username Already Exits....&#x1F44E;
-            </div>
-        </div>
-    </div>
-
-    <div aria-live='polite' aria-atomic='true' class='position-fixed top-0 end-0 bd-example-toasts'>
-        <div class='toast-container'>
-            <div class='toast' id='liveToast6'>
-                <div class='toast-header'>
-                    <img src="<?php echo "http://$hostname/livechat/img/fav-icon.png";?>" style='height:20px; width:30px;' class='rounded me-2' alt='tost'>
-                    <strong class='me-auto'>LiveChat</strong>
-                    <small></small>
-                    <button type='button'  class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-                </div>
-            <div class='toast-body'>
-                 Password Send to Registed Email Id....&#128077;
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <span id='log_msg'></span>
-        <span id='registration_msg'></span>
-        <span id='forget_msg'></span>
-    </div>
 
 </body>
 

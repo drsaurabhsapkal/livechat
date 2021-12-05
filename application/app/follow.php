@@ -21,7 +21,7 @@
                 continue;
             }else if(($row['status'])==='Online'){
                 echo "
-                <div class='bg-transparent card shadow-sm mt-1' onclick=clicked_user('{$row['email']}')>
+                <div class='bg-transparent card shadow-sm mt-1 teraclass' onclick=clicked_user('{$row['email']}')>
                     <div class='row g-0 p-2  border-0'>
                         <div class='col-md-2 p-2  rounded-circle'>
                             <img src='http://$hostname/livechat/img/profile_img/".$row['photo']."' class='img-fluid'>
@@ -44,7 +44,7 @@
                 ";
             }else if(($row['status'])==='Offline'){
                 echo "
-                <div class='bg-transparent card shadow-sm mt-1' onclick=clicked_user('{$row['email']}')>
+                <div class='bg-transparent card shadow-sm mt-1 teraclass' onclick=clicked_user('{$row['email']}')>
                     <div class='row g-0 p-1 '>
                         <div class='col-md-2 p-2  rounded-circle'>
                             <img src='http://$hostname/livechat/img/profile_img/".$row['photo']."' class='img-fluid'>
