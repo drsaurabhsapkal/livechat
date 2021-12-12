@@ -41,7 +41,7 @@ if(mysqli_num_rows($result)>0){
         ";
 }
 
-$sql1 = "SELECT * FROM `msg` ORDER BY `mid` asc limit 10;";
+$sql1 = "SELECT * FROM `msg` ORDER BY `mid` asc limit 16;";
 $result1 = mysqli_query($conn,$sql1) or die("SQL Query error....!");
 $messages ='
 <table class="table table-bordered border-primary mt-2 table-hover" id="list-table">
@@ -248,6 +248,48 @@ if(isset($_POST['list_query'])){
                 $('.mission').text('Query');
             </script>
         ";
+        $sql4 = "SELECT * FROM `query_feedback` WHERE `type`='query' ORDER BY `id` asc limit 15";
+        $result4 = mysqli_query($conn,$sql4) or die("SQL Query error....!");
+        $query  = '
+            <table class="table table-bordered border-primary mt-2 table-hover" id="list-table">
+                <tr class="table-secondary border-primary text-center">
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Query</th>
+                    <th>Answer</th>
+                    <th>Date</th>
+                    <th colspan="2">Action</th>
+                </tr>
+        ';
+        if(mysqli_num_rows($result4)>0){
+            while($row4=mysqli_fetch_assoc($result4)){
+                $query .= "
+                <tr>
+                    <td style='width: 20px;'>{$row4['id']}</td>
+                    <td style='width: 100px;'>{$row4['sender_email']}</td>
+                    <td style='width: 30%;'>{$row4['Query_Feedback']}</td>
+                    <td>";
+                    if($row4['Answer']==''){
+                        $query .= '
+                            <textarea class="form-control bg-transparent" id="fmessage" rows="1" placeholder="Message"></textarea>
+                        ';
+                    }else{
+                        $query .= "<textarea class='form-control bg-transparent' id='fmessage' rows='4'>{$row4['Answer']}</textarea>";
+                    }
+                    $query .= "</td>
+                    <td style='width: 100px;'>{$row4['date']}</td>
+                    <td style='width: 20px;'><button id='update' class='btn btn-success btn-sm' value='{$row4['id']}'>Update</button></td>
+                    <td style='width: 20px;'><button id='delete' class='btn btn-danger btn-sm' value='{$row4['id']}'>Delete</button></td>
+                </tr>
+                ";
+            }
+            echo "
+                    </table>
+                ";
+        }
+
+        echo $query;
+
     }
 }
 // feedback
@@ -258,6 +300,38 @@ if(isset($_POST['list_feedback'])){
                 $('.mission').text('Feedback');
             </script>
         ";
+
+        $sql4 = "SELECT * FROM `query_feedback` WHERE `type`='feedback' ORDER BY `id` asc limit 15";
+        $result4 = mysqli_query($conn,$sql4) or die("SQL Query error....!");
+        $feedback  = '
+            <table class="table table-bordered border-primary mt-2 table-hover" id="list-table">
+                <tr class="table-secondary border-primary text-center">
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>feedback</th>
+                    <th>Date</th>
+                    <th colspan="2">Action</th>
+                </tr>
+        ';
+        if(mysqli_num_rows($result4)>0){
+            while($row4=mysqli_fetch_assoc($result4)){
+                $feedback .= "
+                <tr>
+                    <td style='width: 70px;'>{$row4['id']}</td>
+                    <td style='width: 200px;'>{$row4['sender_email']}</td>
+                    <td class='text-justify'>{$row4['Query_Feedback']}</td>
+                    <td style='width: 100px;'>{$row4['date']}</td>
+                    <td style='width: 20px;'><button id='delete' class='btn btn-danger btn-sm' value='{$row4['id']}'>Delete</button></td>
+                </tr>
+                ";
+            }
+            echo "
+                    </table>
+                ";
+        }
+
+        echo $feedback;
+
     }
 }
 
@@ -274,39 +348,29 @@ if(isset($_POST['list_feedback'])){
 <script>
     var ctx = document.getElementById("chart_profile").getContext("2d");
     var myChart = new Chart(ctx,{
-    type:"doughnut",
+    type:"bar",
     data:{
         labels: [
-            'Online',
-            'Offline',
+            'Users',
+            'Groups',
         ],
         datasets:[
             {
-                data: [100,50],
+                data: [30,80],
                 fill: false,
                 label: "Online",
                 backgroundColor:[
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
+                    'rgb(255, 102, 140)',
+                    'rgb(255, 102, 140)'
                 ],
             },
             {
-                data: [100,20],
+                data: [70,20],
                 fill: false,
                 label: "Offline",
                 backgroundColor:[
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
+                    'rgb(102, 179, 255)',
+                    'rgb(102, 179, 255)'
                 ],
             },
         ],
@@ -343,3 +407,36 @@ if(isset($_POST['list_feedback'])){
     },
 })
 </script>
+
+<script>
+    
+$( document ).ready(function() {
+  $("#delete").on("click",function(event){
+    var d_val = 'delete';
+    var delete_val = $("#delete").val();
+    console.log(delete_val);
+    $.ajax({
+      url : hostname+"/livechat/application/app/feedback.php",
+      type:"POST",
+      data :{d_val:d_val,delete_val:delete_val},
+    });
+    event.preventDefault();
+  });
+
+  $("#update").on("click",function(event){
+    var u_val = 'update';
+    var update_val = $("#update").val();
+    var answer_val = $("#fmessage").val();
+    console.log(answer_val);
+    $.ajax({
+      url : hostname+"/livechat/application/app/feedback.php",
+      type:"POST",
+      data :{u_val:u_val,update_val:update_val,answer_val:answer_val},
+    });
+    event.preventDefault();
+  });
+
+});
+
+</script>
+

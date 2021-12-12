@@ -6,6 +6,22 @@
         <script src='http://$hostname/livechat/admin/script/java.js'></script>
         <script src='http://$hostname/livechat/admin/script/Chart.js'></script>
     ";
+    foreach($conn->query("SELECT COUNT(*) FROM msg") as $row) {
+        $m = $row['COUNT(*)'];
+    }
+    foreach($conn->query("SELECT COUNT(*) FROM follow") as $row) {
+        $f = $row['COUNT(*)'];
+    }
+
+    foreach($conn->query("SELECT COUNT(*) FROM users") as $row) {
+        $u = $row['COUNT(*)'];
+    }
+    foreach($conn->query("SELECT COUNT(*) FROM `group`") as $row) {
+        $g = $row['COUNT(*)'];
+    }
+
+
+
 ?>
 
 <div class="container-fluid">
@@ -59,13 +75,13 @@
                                     <div class="card-deck">
                                         <div class="card text-white bg-info mb-3"  id="to-pay">
                                             <div class="card-body text-center">
-                                                <p class="display-1"><span id="buy_pay">100</span><sup>+</sup></p>
+                                                <p class="display-1"><span id="buy_pay"><?php echo $u;?></span><sup>+</sup></p>
                                                 <p class="card-text mt-4 text-uppercase"><i class="far fa-money-bill-alt"></i> TOTAL Users </p>
                                             </div>
                                         </div>
                                         <div class="card text-white bg-warning mb-3"  id="payed">
                                             <div class="card-body text-center">
-                                                <p class="display-1"><span id="users">80</span><sup>+</sup></p>
+                                                <p class="display-1"><span id="users"><?php echo $f;?></span><sup>+</sup></p>
                                                 <p class="card-text mt-4 text-uppercase"><i class="fas fa-shopping-bag"></i> TOTAL Followers </p>
                                             </div>
                                         </div>
@@ -73,13 +89,13 @@
                                     <div class="card-deck">
                                         <div class="card text-white bg-primary mb-3" id="products">
                                             <div class="card-body text-center">
-                                                <p class="display-1"><span id="product_counter">50</span><sup>+</sup></p>
+                                                <p class="display-1"><span id="product_counter"><?php echo $g;?></span><sup>+</sup></p>
                                                 <p class="card-text mt-4 text-uppercase"><i class="fas fa-store"></i> TOTAL Groups </p>
                                             </div>
                                         </div>
                                         <div class="card text-white bg-danger mb-3"  id="add-cart">
                                             <div class="card-body text-center">
-                                                <p class="display-1"><span id="cart_counter">1500</span><sup>+</sup></p>
+                                                <p class="display-1"><span id="cart_counter"><?php echo $m;?></span><sup>+</sup></p>
                                                 <p class="card-text mt-4 text-uppercase"><i class="fas fa-cart-plus"></i> TOTAL Messages </p>
                                             </div>
                                         </div>
@@ -115,13 +131,9 @@
                 fill: true,
                 label: "Graph",
                 backgroundColor:[
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
+                    'rgb(102, 204, 255)',
+                    'rgb(102, 0, 255)',
+                    'rgb(255, 204, 0)'
                 ],
             },
         ],

@@ -245,3 +245,27 @@ function exitgroup(user_exit){
     }
   });
 }
+
+
+
+$( document ).ready(function() {
+  $("#feedback").on("click",function(event){
+    var feed_name = $("#fname").val();
+    var feed_email = $("#femail").val();
+    var feed_select = $("#fselect").val();
+    var feed_message = $("#fmessage").val();
+    $.ajax({
+      url : hostname+"/livechat/application/app/feedback.php",
+      type:"POST",
+      data :{feed_name:feed_name,feed_email:feed_email,feed_select:feed_select,feed_message:feed_message},
+      success : function(data){
+          $("#feedback").html(data);  
+          $("#fname").val('');
+          $("#femail").val('');
+          $("#fselect").val('');
+          $("#fmessage").val(''); 
+      }
+    });
+    event.preventDefault();
+  });
+});

@@ -1,3 +1,12 @@
+.rg-left{
+  float: left;
+}
+.rg-deco{
+  text-decoration: none;
+}
+.rg-right{
+  float: right;
+}
 .dot {
     height: 8px;
     width: 8px;
@@ -146,3 +155,13 @@
   background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
 }
 
+.teraclass1:before{
+  content: '';
+  position: absolute;
+  width: 2%;
+  height: 1%;
+  margin-top: 20px;
+}
+.teraclass1:hover:before{
+  background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+}
